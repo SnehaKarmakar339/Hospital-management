@@ -394,3 +394,52 @@ while True:
                                         cursor.execute("select*from other_staff_details where name='"+name+"'")
                                         e=cursor.fetchall()
                                         print(e)      
+                           #deleting a member        
+                           elif b==4:   
+                                print('''
+                                           1) Doctor details
+                                           2) Nurse details
+                                           3) others staff
+                                                          ''')
+                                c=int(input("Enter your choice:"))
+                                #deleting doctors details
+                                if c==1:
+                                    name=input("Enter doctors name:")
+                                    cursor.execute("select*from doctor_details where name='"+name+"'")
+                                    row=cursor.fetchall()
+                                    print(row)
+                                    p=input("you really wanna delete this data? (y/n):")
+                                    if p=="y":
+                                        cursor.execute("delete from doctor_details where name='"+name+"'")
+                                        mysql.commit()
+                                        print("SUCCESSFULLY DELETED!!")
+                                    else:
+                                        print("NOT DELETED")
+                                #deleting nurse details
+                                elif c==2:
+                                    name=input("Enter nurse name:")
+                                    cursor.execute("select*from nurse_details where name='"+name+"'")
+                                    row=cursor.fetchall()
+                                    print(row)
+                                    p=input("you really wanna delete this data? (y/n):")
+                                    if p=="y":
+                                        cursor.execute("delete from nurse_details where name='"+name+"'")
+                                        mysql.commit()
+                                        print("SUCCESSFULLY DELETED!!")
+                                    else:
+                                        print("NOT DELETED")
+                                #deleting worker details
+                                elif c==3:
+                                    name=input("Enter workers name:")
+                                    cursor.execute("select*from other_staff_details where name='"+name+"'")
+                                    row=cursor.fetchall()
+                                    print(row)
+                                    p=input("you really wanna delete this data? (y/n):")
+                                    if p=="y":
+                                        cursor.execute("delete from other_staff_details where name='"+name+"'")
+                                        mysql.commit()
+                                        print("SUCCESSFULLY DELETED!!")
+                                    else:
+                                        print("NOT DELETED")
+                           elif b==5:
+                                break
