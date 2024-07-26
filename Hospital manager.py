@@ -443,3 +443,95 @@ while True:
                                         print("NOT DELETED")
                            elif b==5:
                                 break
+                       #patient details
+                       if a==2:
+                            print('''
+                                      1)Show patients info
+                                      2)Add New Patient
+                                      3)Discharge Summary
+                                      4)Exit
+                                                                ''')
+
+                            b=int(input("Enter your choice:"))
+                                  #showing the existing datas
+                                  #if user wants to see the details of the patient
+                            if b==1:
+                               print('''
+
+                                                1) Details of all existing patients
+                                                2) Details of a specific patient
+
+                                                                                             ''')
+                               h=int(input("Enter your choice: ")) 
+                               if h==1:
+                                  cursor.execute("select*from patient_details")
+                                  row=cursor.fetchall()
+                                  for i in row:
+                                    v=list(i)
+                                    k=["NAME","SEX","AGE","DIAGNOSED ILLNESS","ADDRESS","CONTACT"]
+                                    d=dict(zip(k,v))
+                                    print(d)
+                               elif h==2:
+                                   n=input("Enter name of the patient you'd like to display: ")
+                                   cursor.execute("select*from patient_details where name='"+n+"'  ")
+                                   s=cursor.fetchone()
+                                   p=list(s)
+                                   k=["NAME","SEX","AGE","DIAGNOSED ILLNESS","ADDRESS","CONTACT"]
+                                   d=dict(zip(k,p))
+                                   print(d)
+                                   
+                                   
+                            #adding new patient
+                            elif b==2:
+                                n=input("Enter the name: ")
+                                s=input("Enter the sex: ")
+                                a=input("Enter the age: ")
+                                di=input("Enter the diagnosed illness:")
+                                add=input("Enter the address: ")
+                                con=input("Enter the contact: ")
+                                cursor.execute(" insert into patient_details values('"+n+"','"+s+"','"+a+"','"+di+"','"+add+"','"+con+"') ")
+                                mysql.commit()
+
+                                l=[n,s,int(a),add,int(con)]
+                                l=list(l)
+                                k=["NAME","SEX","AGE","DIAGNOSED ILLNESS","ADDRESS","CONTACT"]
+                                d=dict(zip(k,l))
+                                print()
+                                print(  """
+                                                            !!!!!SUCCESSFULLY REGISTERED!!!!
+
+                                                                                                           """)
+                            
+                           
+                                
+                            #discharge process
+                            elif b==3:
+                                name=input("Enter name of the patient :")
+                                cursor.execute("select*from patient_details where name='"+name+"' ")
+                                row=cursor.fetchall()
+                                print(row)
+                                bill=str(input("Has they paid all the bills? (y/n):"))
+                                if bill=="y" :
+                                    cursor.execute("delete from patient_details where name='"+name+"' ")
+                                    print()
+                                    print("!!!PATIENT HAS BEEN RELEASED SUCCESSFULLY!!!")
+                                elif bill=='n':
+                                    print()
+                                    print("!!!THE PATIENT CAN'T BE RELEASED YET!!!")
+                                    
+                            #if user wants to exit
+                            elif b==4:
+                                break
+                            #SIGN OUT
+
+                       elif a==3:
+                            
+                            break
+
+            #if the username and password is not in the database
+                        
+
+        else:
+          break
+                             
+                                    
