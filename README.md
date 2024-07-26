@@ -1,0 +1,1 @@
+Current version: A very basic - mini hospital management project in which the admin  can carry out the various registering and administrative works such as, entering , updating, displaying and deleting the details of the registered staffs and employees working in a hospital, after finishing with the above mentioned respective administrative activities the admin can sign out.
