@@ -167,3 +167,51 @@ while True:
                                        d=dict(zip(k,p))
                                        print(d)
                                       
+                           #Enter a new record
+                           elif b==2:
+                                print('''
+                                           1) Doctor details
+                                           2) Nurse details
+                                           3) Others staff
+                                                                ''')
+                                
+                                c=int(input("Enter your choice:"))
+                                #Enter doctor details
+                                if c==1:
+                                    #inputting the details
+                                    reg=input("Enter the liscence number: ")
+                                    name=input("Enter the doctors name:")
+                                    spe=input("Enter the specialization:")
+                                    age=input("Enter the age:")
+                                    add=input("Enter the address:")
+                                    con=input("Enter the contact:")
+                                    fees=input("Enter the fees:")
+                                    ms=input("Enter the salary:")
+                                    #inserting values in doctor details
+                                    cursor.execute("insert into doctor_details values('"+reg+"','"+name+"','"+spe+"','"+age+"','"+add+"','"+con+"','"+fees+"','"+ms+"')")
+                                    mysql.commit()
+                                    print("SUCCESSFULLY ADDED")
+                                #Enter nurse details
+                                elif c==2:
+                                    #inputting the values
+                                    name=input("Enter the name:")
+                                    age=input("Enter the age:")
+                                    add=input("Enter the address:")
+                                    con=input("Enter the contact:")
+                                    ms=input("Enter the monthly salary:")
+                                    #inserting values in nurse details
+                                    cursor.execute("insert into nurse_details values('"+name+"','"+age+"','"+add+"','"+con+"','"+ms+"')")
+                                    mysql.commit()
+                                    print("SUCCESSFULLY ADDED")
+                                #enter worker details
+                                elif c==3:
+                                    #inputting values
+                                    name=input("Enter the name:")
+                                    age=input("Enter the age:")
+                                    add=input("Enter the address:")
+                                    con=input("Enter the contact:")
+                                    ms=input("Enter the monthly salary:")
+                                    #inserting values in worker details
+                                    cursor.execute("insert into other_staff_details values('"+name+"','"+age+"','"+add+"','"+con+"','"+ms+"')")
+                                    mysql.commit()
+                                    print("SUCCESSFULLY ADDED")
