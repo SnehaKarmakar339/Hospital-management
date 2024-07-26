@@ -215,3 +215,182 @@ while True:
                                     cursor.execute("insert into other_staff_details values('"+name+"','"+age+"','"+add+"','"+con+"','"+ms+"')")
                                     mysql.commit()
                                     print("SUCCESSFULLY ADDED")
+                           #Updating details
+                           elif b==3:
+                                print('''
+                                           1) Doctor details
+                                           2) Nurse details
+                                           3) Other staff
+
+                                                             ''')
+                                c=int(input("Enter your choice:"))
+                                #Updating Doctor's details
+                                if c==1:
+                                    name=input("Enter the name of the doctor you want to update:")
+                                    cursor.execute("select*from doctor_details where name='"+name+"'")
+                                    r=cursor.fetchall()
+                                    print(r)
+                                    print(''' Enter the number for the respective choice to update it:
+                                                1) age
+                                                2) address
+                                                3) contact
+                                                4) fees
+                                                5) monthly salary
+                                                                             ''')
+                                    d=int(input("Enter your choice:"))
+                                    if d==1:#Changing age                                                                   
+                                        age=input("Enter the new age:")
+                                        cursor.execute("update doctor_details set age='"+age+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("The age has been updated!")
+                                        print()
+                                        cursor.execute("select*from doctor_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)
+                                    
+                                    elif d==2:#Changing address
+                                        print("!!!Please dont enter more than 30 characters!!!")
+                                        add=input("Enter new address:")
+                                        cursor.execute("update doctor_details set address='"+add+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("!!!The address has been updated!!!")
+                                        print()
+                                        cursor.execute("select*from doctor_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)                                        
+                                    elif d==3:#changing contact number
+                                        print("!!!Please dont enter more than 10 characters!!!")
+                                        cont=input("Enter new contact number:")
+                                        cursor.execute("update doctor_details set contact='"+cont+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("!!!The contact has been updated!!!")
+                                        print()
+                                        cursor.execute("select*from doctor_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)          
+                                    elif d==4: #Changing fees
+                                        print("!!!Please dont enter more than 5 characters!!!")
+                                        fee=input("Enter new assigned fees:")
+                                        cursor.execute("update doctor_details set fees='"+fee+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("!!!The fees has been updated!!!")
+                                        print()
+                                        cursor.execute("select*from doctor_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)      
+                                    elif d==5:#Changing salary 
+                                        print("!!!Please dont enter more than 10 characters!!!")
+                                        sal=input("Enter new assigned salary:")
+                                        cursor.execute("update doctor_details set monthly_salary='"+sal+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("!!!The monthly salary has been updated!!!")
+                                        print()
+                                        cursor.execute("select*from doctor_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)      
+                                #Updating Nurses details       
+                                elif c==2:
+                                    name=input("Enter the name of the nurse you want to update:")
+                                    cursor.execute("select*from nurse_details where name='"+name+"'")
+                                    r=cursor.fetchall()
+                                    print(r)
+                                    print(''' Enter the number for the respective choice to update it:
+                                                1) age
+                                                2) address
+                                                3) contact
+                                                4) monthly salary
+                                                                             ''')
+                                    d=int(input("Enter your choice:"))
+                                    if d==1:#Changing age                                                                   
+                                        age=input("Enter the new age:")
+                                        cursor.execute("update nurse_details set age='"+age+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("The age has been updated!")
+                                        print()
+                                        cursor.execute("select*from nurse_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)
+                                    
+                                    elif d==2:#Changing address
+                                        print("!!!Please dont enter more than 30 characters!!!")
+                                        add=input("Enter new address:")
+                                        cursor.execute("update nurse_details set address='"+add+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("!!!The address has been updated!!!")
+                                        print()
+                                        cursor.execute("select*from nurse_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)                                        
+                                    elif d==3:#changing contact number
+                                        print("!!!Please dont enter more than 10 characters!!!")
+                                        cont=input("Enter new contact number:")
+                                        cursor.execute("update nurse_details set contact='"+cont+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("!!!The contact has been updated!!!")
+                                        print()
+                                        cursor.execute("select*from nurse_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)            
+                                    elif d==4:#Changing salary 
+                                        print("!!!Please dont enter more than 10 characters!!!")
+                                        sal=input("Enter new assigned salary:")
+                                        cursor.execute("update nurse_details set monthly_salary='"+sal+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("!!!The monthly salary has been updated!!!")
+                                        print()
+                                        cursor.execute("select*from nurse_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)      
+                                #Updating other staff's details
+                                elif c==3: 
+                                    name=input("Enter the name of the staff you want to update:")
+                                    cursor.execute("select*from other_staff_details where name='"+name+"'")
+                                    r=cursor.fetchall()
+                                    print(r)
+                                    print(''' Enter the number for the respective choice to update it:
+                                                1) age
+                                                2) address
+                                                3) contact
+                                                4) monthly salary
+                                                                             ''')
+                                    d=int(input("Enter your choice:"))
+                                    if d==1:#Changing age                                                                   
+                                        age=input("Enter the new age:")
+                                        cursor.execute("update other_staff_details set age='"+age+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("The age has been updated!")
+                                        print()
+                                        cursor.execute("select*from other_staff_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)
+                                    
+                                    elif d==2:#Changing address
+                                        print("!!!Please dont enter more than 30 characters!!!")
+                                        add=input("Enter new address:")
+                                        cursor.execute("update other_staff_details set address='"+add+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("!!!The address has been updated!!!")
+                                        print()
+                                        cursor.execute("select*from other_staff_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)                                        
+                                    elif d==3:#changing contact number
+                                        print("!!!Please dont enter more than 10 characters!!!")
+                                        cont=input("Enter new contact number:")
+                                        cursor.execute("update other_staff_details set contact='"+cont+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("!!!The contact has been updated!!!")
+                                        print()
+                                        cursor.execute("select*from other_staff_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)            
+                                    elif d==4:#Changing salary 
+                                        print("!!!Please dont enter more than 10 characters!!!")
+                                        sal=input("Enter new assigned salary:")
+                                        cursor.execute("update other_staff_details set monthly_salary='"+sal+"' where name='"+name+"'")
+                                        mysql.commit()
+                                        print("!!!The monthly salary has been updated!!!")
+                                        print()
+                                        cursor.execute("select*from other_staff_details where name='"+name+"'")
+                                        e=cursor.fetchall()
+                                        print(e)      
